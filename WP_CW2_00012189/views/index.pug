@@ -1,0 +1,19 @@
+extends layout.pug
+
+block content
+    if success_msg
+        p.success_msg Done! #{ success_msg }!
+
+    if error_msg
+        p.error_msg #{ error_msg }
+
+    h2 All Tickets
+
+    if tasks
+        each task in tasks         
+            .tasks_list_item_container             
+                p.tasks_list_item.task_name #{ task.taskName }
+                button.tasks_list_item.delete_btn#delete_btn Delete
+                a(href=`update/${task.id}`)
+                    button.tasks_list_item.edit_btn#edit_btn Edit 
+            hr
